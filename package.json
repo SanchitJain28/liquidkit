@@ -1,17 +1,7 @@
 {
-  "name": "liquidkit",
-  "version": "0.0.1",
-  "description": "Shopify Liquid UI component library",
-  "keywords": [
-    "shopify",
-    "liquid",
-    "components",
-    "shopify-theme"
-  ],
-  "author": "yourname",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/SanchitJain28/liquidkit"
-  }
+  "name": "liquidkit-root",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ]
 }
