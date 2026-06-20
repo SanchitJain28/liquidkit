@@ -371,6 +371,6 @@ Running `liquidkit add announcement-bar` twice is safe. File writes skip if cont
 
 **`liquid_components.*` is a reserved namespace.**  
 All LiquidKit locale strings live under `liquid_components` in `en.default.schema.json`. This is a documented convention so theme developers know not to add their own keys there.
-
+v
 **npx-first.**  
 The CLI is designed to be used without a global install: `npx liquidkit add ...`. Publishing to npm as `liquidkit` (the package name) makes this work.

@@ -1,16 +1,21 @@
 {
   "name": "liquidkit",
-  "version": "0.0.1",
-  "description": "Shopify Liquid UI component library",
+  "version": "0.0.3",
+  "description": "Shopify Liquid UI component library — install components with a single command",
   "type": "module",
   "bin": {
-    "liquidkit": "./bin/cli.js"
+    "liquidkit": "bin/cli.js"
   },
+  "files": [
+    "bin/",
+    "src/"
+  ],
   "keywords": [
     "shopify",
     "liquid",
     "components",
-    "shopify-theme"
+    "shopify-theme",
+    "cli"
   ],
   "author": "Sanchit Jain",
   "license": "MIT",
