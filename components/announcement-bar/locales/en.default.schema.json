@@ -1,0 +1,44 @@
+{
+  "liquid_components": {
+    "announcement_bar": {
+      "name": "Announcement Bar",
+      "label": "Announcement",
+      "dismiss": "Dismiss announcement",
+      "prev": "Previous announcement",
+      "next": "Next announcement",
+      "settings": {
+        "autoplay": {
+          "label": "Autoplay"
+        },
+        "autoplay_speed": {
+          "label": "Autoplay speed"
+        },
+        "show_nav_arrows": {
+          "label": "Show navigation arrows"
+        }
+      },
+      "blocks": {
+        "announcement": {
+          "name": "Announcement",
+          "settings": {
+            "message": {
+              "label": "Message"
+            },
+            "link": {
+              "label": "Link"
+            },
+            "dismissible": {
+              "label": "Dismissible"
+            },
+            "bg_color": {
+              "label": "Background color"
+            },
+            "text_color": {
+              "label": "Text color"
+            }
+          }
+        }
+      }
+    }
+  }
+}

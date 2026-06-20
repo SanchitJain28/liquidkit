@@ -1,0 +1,105 @@
+{
+  "component": "announcement-bar",
+  "section_settings": [
+    {
+      "id": "autoplay",
+      "type": "checkbox",
+      "default": true,
+      "label": "Autoplay",
+      "description": "Auto-advance between announcements"
+    },
+    {
+      "id": "autoplay_speed",
+      "type": "range",
+      "min": 2,
+      "max": 8,
+      "step": 1,
+      "unit": "s",
+      "default": 4,
+      "label": "Autoplay speed",
+      "description": "Seconds per slide"
+    },
+    {
+      "id": "show_nav_arrows",
+      "type": "checkbox",
+      "default": true,
+      "label": "Show navigation arrows",
+      "description": "Show prev/next arrows"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "announcement",
+      "settings": [
+        {
+          "id": "message",
+          "type": "richtext",
+          "default": "Free shipping on orders over $50",
+          "label": "Message",
+          "description": "Announcement text"
+        },
+        {
+          "id": "link",
+          "type": "url",
+          "default": "",
+          "label": "Link",
+          "description": "Wraps entire bar in anchor tag if set"
+        },
+        {
+          "id": "dismissible",
+          "type": "checkbox",
+          "default": false,
+          "label": "Dismissible",
+          "description": "Show dismiss button"
+        },
+        {
+          "id": "bg_color",
+          "type": "color",
+          "default": null,
+          "fallback_token": "--lk-color-primary",
+          "label": "Background color",
+          "description": "Block background color"
+        },
+        {
+          "id": "text_color",
+          "type": "color",
+          "default": null,
+          "fallback_token": "--lk-color-primary-text",
+          "label": "Text color",
+          "description": "Block text and icon color"
+        }
+      ]
+    }
+  ],
+  "preview_data": {
+    "section_settings": {
+      "autoplay": true,
+      "autoplay_speed": 4,
+      "show_nav_arrows": true
+    },
+    "blocks": [
+      {
+        "id": "block-1",
+        "type": "announcement",
+        "settings": {
+          "message": "Free shipping on orders over $50",
+          "link": "",
+          "dismissible": true,
+          "bg_color": "#000000",
+          "text_color": "#ffffff"
+        }
+      },
+      {
+        "id": "block-2",
+        "type": "announcement",
+        "settings": {
+          "message": "New arrivals just dropped",
+          "link": "/collections/new",
+          "dismissible": false,
+          "bg_color": "#e63946",
+          "text_color": "#ffffff"
+        }
+      }
+    ]
+  }
+}

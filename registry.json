@@ -1,3 +1,27 @@
 {
-  "components": {}
+  "components": {
+    "announcement-bar": {
+      "name": "Announcement Bar",
+      "version": "1.0.0",
+      "description": "Dismissible announcement banner with single message or multi-message carousel.",
+      "tier": "free",
+      "files": [
+        {
+          "src": "announcement-bar/sections/lk-announcement-bar.liquid",
+          "dest": "sections/lk-announcement-bar.liquid"
+        },
+        {
+          "src": "announcement-bar/assets/lk-announcement-bar.js",
+          "dest": "assets/lk-announcement-bar.js"
+        },
+        {
+          "src": "announcement-bar/assets/lk-announcement-bar.css",
+          "dest": "assets/lk-announcement-bar.css"
+        }
+      ],
+      "manualSteps": [
+        "Merge locales/en.default.schema.json keys into your theme's locales/en.default.schema.json"
+      ]
+    }
+  }
 }

@@ -19,7 +19,7 @@ const MOCK_DATA: Record<string, MockData> = {
           type: "announcement",
           settings: {
             message: "Free shipping on orders over $50",
-            link: "/collections/all",
+            link: "",
             dismissible: true,
             bg_color: "#000000",
             text_color: "#ffffff",
@@ -30,7 +30,7 @@ const MOCK_DATA: Record<string, MockData> = {
           type: "announcement",
           settings: {
             message: "New arrivals just dropped",
-            link: "/collections/new",
+            link: "",
             dismissible: false,
             bg_color: "#e63946",
             text_color: "#ffffff",
@@ -50,11 +50,11 @@ export async function renderComponent(
   liquidSource: string,
   cssSource: string,
   jsSource: string,
+  customMockData?: any
 ): Promise<string> {
-  const mockData = MOCK_DATA[slug];
+  const mockData = customMockData || MOCK_DATA[slug];
   if (!mockData) throw new Error(`No mock data for component "${slug}"`);
 
-  // Strip {% schema %} blocks — not valid outside Shopify
   const cleanedLiquid = liquidSource
     .replace(/\{%-?\s*schema\s*-?%\}[\s\S]*?\{%-?\s*endschema\s*-?%\}/g, "")
     .replace(
@@ -64,7 +64,9 @@ export async function renderComponent(
     .replace(
       /\{%-?\s*javascript\s*-?%\}[\s\S]*?\{%-?\s*endjavascript\s*-?%\}/g,
       "",
-    );
+    )
+    .replace(/\{\{[^}]*stylesheet_tag[^}]*\}\}/g, "")
+    .replace(/<script[^>]*asset_url[^>]*><\/script>/g, "");
 
   const body = await engine.parseAndRender(cleanedLiquid, mockData);
 
@@ -74,8 +76,30 @@ export async function renderComponent(
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>${cssSource}</style>
+  <style>
+    /* Premium preview container styles */
+    body {
+      margin: 0;
+      padding: 1.5rem;
+      min-height: 200px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+      gap: 1.5rem;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color: #F4F6F8;
+      -webkit-font-smoothing: antialiased;
+    }
+    /* Let components take full width if they want, but max out at a readable width */
+    body > * {
+      width: 100%;
+      max-width: 800px;
+    }
+  </style>
 </head>
-<body style="margin:0;padding:0;background:transparent;">
+<body style="background:transparent;">
   ${body}
   <script>${jsSource}</script>
 </body>

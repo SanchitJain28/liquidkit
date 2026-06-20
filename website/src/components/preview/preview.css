@@ -1,0 +1,133 @@
+/* Preview surface tokens — shadcn-themed wrapper around the srcdoc iframe.
+   Mirrors the shadcn component-preview pattern: rounded card, subtle border,
+   muted header strip, and a flat canvas. Values are wired to globals.css
+   semantic tokens so dark/light themes follow the rest of the site. */
+
+.lk-preview {
+  --lk-preview-radius: var(--radius-lg);
+  --lk-preview-bg: var(--card);
+  --lk-preview-border: var(--border);
+  --lk-preview-muted: var(--muted);
+  --lk-preview-muted-fg: var(--muted-foreground);
+  --lk-preview-fg: var(--card-foreground);
+  --lk-preview-header-bg: color-mix(in oklab, var(--muted) 70%, transparent);
+  --lk-preview-divider: var(--border);
+  --lk-preview-shadow: 0 1px 2px rgb(0 0 0 / 0.04), 0 8px 24px -12px rgb(0 0 0 / 0.08);
+  --lk-preview-min-height: 16rem;
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: var(--lk-preview-radius);
+  border: 1px solid var(--lk-preview-border);
+  background: var(--lk-preview-bg);
+  color: var(--lk-preview-fg);
+  box-shadow: var(--lk-preview-shadow);
+}
+
+.lk-preview__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.625rem 0.875rem;
+  background: var(--lk-preview-header-bg);
+  border-bottom: 1px solid var(--lk-preview-divider);
+}
+
+.lk-preview__dots {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.lk-preview__dot {
+  width: 0.625rem;
+  height: 0.625rem;
+  border-radius: 9999px;
+  background: var(--lk-preview-border);
+}
+
+.lk-preview__dot--r { background: oklch(0.704 0.191 22.216 / 0.7); }
+.lk-preview__dot--y { background: oklch(0.828 0.189 84.429 / 0.7); }
+.lk-preview__dot--g { background: oklch(0.768 0.176 152.528 / 0.7); }
+
+.lk-preview__title {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--lk-preview-muted-fg);
+  font-family: var(--font-mono, ui-monospace, SFMono-Regular, monospace);
+}
+
+.lk-preview__badge {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  padding: 0.125rem 0.5rem;
+  border-radius: 9999px;
+  background: var(--lk-preview-muted);
+  color: var(--lk-preview-muted-fg);
+  border: 1px solid var(--lk-preview-border);
+}
+
+.lk-preview__canvas {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  padding: 1.5rem;
+  background: var(--lk-preview-bg);
+  min-height: var(--lk-preview-min-height);
+}
+
+.lk-preview__iframe {
+  width: 100%;
+  border: none;
+  display: block;
+  background: transparent;
+  border-radius: calc(var(--lk-preview-radius) - 4px);
+}
+
+.lk-preview__skeleton {
+  height: var(--lk-preview-min-height);
+  border-radius: var(--lk-preview-radius);
+  background: var(--lk-preview-muted);
+  position: relative;
+  overflow: hidden;
+}
+
+.lk-preview__skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    color-mix(in oklab, var(--lk-preview-bg) 60%, transparent) 50%,
+    transparent 100%
+  );
+  animation: lk-preview-shimmer 1.6s ease-in-out infinite;
+}
+
+@keyframes lk-preview-shimmer {
+  from { transform: translateX(-100%); }
+  to   { transform: translateX(100%); }
+}
+
+.lk-preview__error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  padding: 2rem 1rem;
+  text-align: center;
+  color: var(--destructive);
+  font-size: 0.875rem;
+}
+
+.lk-preview__error-sub {
+  color: var(--lk-preview-muted-fg);
+  font-size: 0.75rem;
+}

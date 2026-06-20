@@ -93,6 +93,7 @@ Every component follows this exact structure, no exceptions:
 ```
 components/
 └── cart-drawer/
+    ├── SCHEMA.md                 ← schema file, this is what the docs use to create the UI to preview
     ├── registry.json             ← component metadata for CLI
     ├── README.md                 ← usage, prerequisites, manual steps
     ├── preview.png               ← screenshot for docs site (800x600)
